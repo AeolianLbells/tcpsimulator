@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,362 +11,133 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
+
 namespace tcpsimulationTest.Model
 {
-   public class tcpVariable : INotifyPropertyChanged
+    [ImplementPropertyChanged]
+    public class tcpVariable
     {
 
         public tcpVariable()
         {
-           
-            _heartbeat = "a";
 
+            HeartbeatForm = "a";
+            Textboxdataok = "dataok";
+            isChec = false;
+            TextboxarmL = "1";
+
+            Textboxarm = "arm";
+            State = "未连接";
+            Port = "9528";
+
+            IPTarget = "192.168.0.33";
+            IPMachine = "";
         } 
 
         
 
-        private string _ipmachine="";
-        public string IPMachine
-        {
-            get { return _ipmachine; }
-            set
-            {
-                if (_ipmachine == value)
-                    return;
-                _ipmachine = value;
-                OnPropertyChanged("IPMachine");
-            }
-        }
+        public string IPMachine { get; set; }
 
 
 
 
 
-        private string _itarget = "192.168.0.33";
-        public string IPTarget
-        {
-            get { return _itarget; }
-            set
-            {
-                if (_itarget == value)
-                    return;
-                _itarget = value;
-                OnPropertyChanged("IPTarget");
-            }
-        }
+        public string IPTarget { get; set; }
 
 
+        public string Port { get; set; }
 
 
-        private string _port = "9528";
-        public string Port
-        {
-            get { return _port; }
-            set
-            {
-                if (_port == value)
-                    return;
-                _port = value;
-                OnPropertyChanged("Port");
-            }
-        }
+        public string State { get; set; }
 
-
-        private string _state = "未连接";
-        public string State
-        {
-            get { return _state; }
-            set
-            {
-                if (_state == value)
-                    return;
-                _state = value;
-                OnPropertyChanged("State");
-            }
-        }
-
-
-
-        private string _texbox1;
         /// <summary>
         /// 通信状态
         /// </summary>
-        public string Texbox1
-        {
-            get { return _texbox1; }
-            set
-            {
-                if (_texbox1 == value)
-                    return;
-                _texbox1 = value;
-                OnPropertyChanged("Texbox1");
-            }
-        }
+        public string Texbox1 { get; set; }
 
 
 
-        private string _texbox2;
         /// <summary>
         /// 通信内容
         /// </summary>
-        public string Texbox2
-        {
-            get { return _texbox2; }
-            set
-            {
-                if (_texbox2 == value)
-                    return;
-                _texbox2 = value;
-                OnPropertyChanged("Texbox2");
-            }
-        }
+        public string Texbox2 { get; set; }
 
 
-        private string _heartbeat;
         /// <summary>
         /// 心跳输入框
         /// </summary>
-        public string HeartbeatForm
-        {
-            get { return _heartbeat; }
-            set
-            {
-                if (_heartbeat == value)
-                    return;
-                _heartbeat = value;
-                OnPropertyChanged("HeartbeatForm");
-            }
-        }
+        public string HeartbeatForm { get; set; }
 
 
-
-        private string _tbarm = "arm";
         /// <summary>
         /// textbox arm
         /// </summary>
-        public string Textboxarm
-        {
-            get { return _tbarm; }
-            set
-            {
-                if (_tbarm == value)
-                    return;
-                _tbarm = value;
-                OnPropertyChanged("Textboxarm");
-            }
-        }
+        public string Textboxarm { get; set; }
 
-
-        private string _tbarmL = "1";
         /// <summary>
         /// textbox arm 1
         /// </summary>
-        public string TextboxarmL
-        {
-            get { return _tbarmL; }
-            set
-            {
-                if (_tbarmL == value)
-                    return;
-                _tbarmL = value;
-                OnPropertyChanged("TextboxarmL");
-            }
-        }
+        public string TextboxarmL { get; set; }
 
-
-        private string[] _tbsheif;
         /// <summary>
         /// textbox sheif
         /// </summary>
-        public string[] Textboxsheif
-        {
-            get { return _tbsheif; }
-            set
-            {
-                if (_tbsheif == value)
-                    return;
-                _tbsheif = value;
-                OnPropertyChanged("Textboxsheif");
-            }
-        }
+        public string[] Textboxsheif { get; set; }
 
-
-
-
-        private string[] _n;
         /// <summary>
         /// textbox sheif L
         /// </summary>
-        public string[] boxN
-        {
-            get { return _n; }
-            set
-            {
-                if (_n == value)
-                    return;
-                _n = value;
-                OnPropertyChanged("boxN");
-            }
-        }
+        public string[] boxN { get; set; }
 
-        private bool checkvariable=false;
         /// <summary>
         /// checkbox
         /// </summary>
-        public bool isChec
-        {
-            get { return checkvariable; }
-            set
-            {
-                if (checkvariable == value)
-                    return;
-                checkvariable = value;
-                OnPropertyChanged("isChec");
-            }
-        }
-
-        private string _tbok = "dataok";
+        public bool isChec { get; set; }
         /// <summary>
         /// 回复dataok
         /// </summary>
-        public string Textboxdataok
-        {
-            get { return _tbok; }
-            set
-            {
-                if (_tbok == value)
-                    return;
-                _tbok = value;
-                OnPropertyChanged("Textboxdataok");
-            }
-        }
+        public string Textboxdataok { get; set; }
 
-
-
-        private ObservableCollection<string> _source;
         /// <summary>
         /// combox 
         /// </summary>
-        public ObservableCollection<string> Source
-        {
-            get { return _source; }
-            set
-            {
-                if (_source == value)
-                    return;
-                _source = value;
-                OnPropertyChanged("Source");
-            }
-        }
+        public ObservableCollection<string> Source { get; set; }
 
-        private ObservableCollection<Paneldata> _grid;
         /// <summary>
         /// datagrid
         /// </summary>
-        public ObservableCollection<Paneldata> Datagrid_List
-        {
-            get { return _grid; }
-            set
-            {
-                if (_grid == value)
-                    return;
-                _grid = value;
-                OnPropertyChanged("Datagrid_List");
-            }
-        }
+        public ObservableCollection<Paneldata> Datagrid_List { get; set; }
 
 
-
-
-
-        private string[] _cboxselected;
         /// <summary>
         /// combobox arm
         /// </summary>
-        public string[] CboxSelected
-        {
-            get { return _cboxselected; }
-            set
-            {
-                if (_cboxselected == value)
-                    return;
-                _cboxselected = value;
-                OnPropertyChanged("CboxSelected");
-            }
-        }
-
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName = "")
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
+        public string[] CboxSelected { get; set; }
 
 
     }
 
-    public class Paneldata : INotifyPropertyChanged
+
+    [ImplementPropertyChanged]
+    public class Paneldata 
     {
 
-        private string _lenght;
-        public string Lenght
-        {
-            get { return _lenght; }
-            set
-            {
-                if (_lenght == value)
-                    return;
-                _lenght = value;
-                OnPropertyChanged("Lenght");
-            }
-        }
+      
+        public string Lenght { get; set; }     
+        public string Width { get; set; }
+        public string Epaisseur { get; set; }
+        public string Speed { get; set; }
+        public string Toolchose { get; set; }
+        public string PickLevel_1 { get; set; }
+        public string PickLevel_2 { get; set; }
+        public string Pickxyz { get; set; }
+        public string PickxyzRatation { get; set; }
 
+        public string PutLevel_1 { get; set; }
+        public string PutLevel_2 { get; set; }
+        public string Putxyz { get; set; }
+        public string PutxyzRotation { get; set; }
 
-        private string _width;
-        public string Width
-        {
-            get { return _width; }
-            set
-            {
-                if (_width == value)
-                    return;
-                _width = value;
-                OnPropertyChanged("Width");
-            }
-
-        }
-        public string Epaisseur;
-        public string Speed;
-        public string Toolchose;
-        public string PickLevel_1;
-        public string PickLevel_2;
-        public string Pickxyz;
-        public string PickxyzRatation;
-
-        public string PutLevel_1;
-        public string PutLevel_2;
-        public string Putxyz;
-        public string PutxyzRotation;
-
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName = "")
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
 
     }
 

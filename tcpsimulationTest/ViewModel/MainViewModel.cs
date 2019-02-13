@@ -37,6 +37,8 @@ namespace tcpsimulationTest.ViewModel
             tcpvariable.boxN = new string[9] { "L1","L2","L3","L4","L5","L6","L7","L8","L9"};
             tcpvariable.Textboxsheif = new string[9] { "sheif", "sheif", "sheif", "sheif", "sheif", "sheif", "sheif", "sheif", "sheif"};
 
+            tcpvariable.Datagrid_List = new ObservableCollection<Paneldata>();
+
         }
 
         
@@ -55,7 +57,12 @@ namespace tcpsimulationTest.ViewModel
         /// </summary>
         public tcpVariable tcpvariable { get; set; } = new tcpVariable();
 
-        
+        /// <summary>
+        /// 板件信息类实例化
+        /// </summary>
+        public Paneldata paneldata { get; set; } = new Paneldata();
+
+       // public ObservableCollection<Paneldata> tcpvariable.Datagrid_List { get; set; } = new ObservableCollection<Paneldata>();
 
 
         public ICommand ConnectCommand => new RelayCommand<Button>(OnConnect);
@@ -116,12 +123,10 @@ namespace tcpsimulationTest.ViewModel
             }
             else
             {
-              //  _isBusing = true;
-                //Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
-                //{
-                //    //要处理UI的逻辑部分
-         
-                //}));
+                //  _isBusing = true;
+               
+
+               
 
                 string recStr = System.Text.Encoding.Default.GetString(recBytes.ToArray()).TrimEnd('\0');
 
@@ -132,8 +137,8 @@ namespace tcpsimulationTest.ViewModel
                     tcpvariable.Texbox2 += $"{DateTime.Now:yyyy-MM-dd HH:mm:ss:fff}\n{recStr}\r\n";
                 }
 
-               
 
+               
 
 
 
@@ -141,7 +146,7 @@ namespace tcpsimulationTest.ViewModel
                 if (recStr == tcpvariable.HeartbeatForm) //心跳比对成功
                 {                  
                     
-                    Thread.Sleep(1000);//模拟机器人处理2秒种
+                    Thread.Sleep(1000);//模拟机器人处理x秒种
                    
                     var t = CollectionMachine();
                     var sendresult = _tcpIpClient.SendStringData(t);
@@ -168,14 +173,42 @@ namespace tcpsimulationTest.ViewModel
 
                   if (recStr.Contains("."))
                     {
-                        
-                        var datalist=recStr.Split('.').ToList();
-                        
+                        Thread.Sleep(1000);//模拟机器人处理x秒种
+
+
+
+                        paneldata = new Paneldata() { };
+                        paneldata.Lenght = recStr.Substring(3, 6); //到第8位
+                        paneldata.Width = recStr.Substring(9, 6);//到第14位
+                        paneldata.Epaisseur = recStr.Substring(15, 4);//到第18
+                        paneldata.Speed = recStr.Substring(19, 2);//20
+                        paneldata.Toolchose = recStr.Substring(21, 1);
+                        paneldata.PickLevel_1 = recStr.Substring(22, 1);
+                        paneldata.PickLevel_2 = recStr.Substring(23, 2);   //23-24
+
+                        paneldata.Pickxyz =$"{recStr.Substring(25, 7)}*{recStr.Substring(32, 7)}*{recStr.Substring(39, 7)}";
+                        paneldata.PickxyzRatation =$"{recStr.Substring(46, 6)}*{recStr.Substring(52, 6)}*{recStr.Substring(58, 6)}";
+
+                        paneldata.PutLevel_1 = recStr.Substring(64, 1);
+                        paneldata.PutLevel_2 = recStr.Substring(65, 2);//66
+                        paneldata.Putxyz = $"{recStr.Substring(67, 7)}*{recStr.Substring(74, 7)}*{recStr.Substring(81, 7)}";
+                        paneldata.PutxyzRotation = $"{recStr.Substring(88, 6)}*{recStr.Substring(94, 6)}*{recStr.Substring(100, 6)}";
 
 
 
 
-                         var sendresult = _tcpIpClient.SendStringData(tcpvariable.Textboxdataok);
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                        {
+                            //要处理UI的逻辑部分
+                            tcpvariable.Datagrid_List.Add(paneldata);
+                        }));
+
+
+
+                       
+
+
+                        var sendresult = _tcpIpClient.SendStringData(tcpvariable.Textboxdataok);
 
                         if(0== sendresult)//dataok 回复
                         {
@@ -208,8 +241,6 @@ namespace tcpsimulationTest.ViewModel
 
                 return;
         }
-
-
 
 
 

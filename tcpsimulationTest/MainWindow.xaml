@@ -7,20 +7,24 @@
         xmlns:i="clr-namespace:tcpsimulationTest.Converter"
         xmlns:y="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="680" Width="900" DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+        Title="MainWindow" Height="800" Width="1000" DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Window.Resources>
         <i:ColorConverter x:Key="colorconverter"/>
     </Window.Resources>
-    
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <WrapPanel Grid.Column="0"  VerticalAlignment="Center">
+        <WrapPanel Grid.Column="0"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,26">
 
             <TextBlock x:Name="cl" Text="{Binding tcpvariable.State}" Foreground="{Binding tcpvariable.State, Converter={StaticResource colorconverter}}" Margin="8,0,5,0"/>
             <Button x:Name="connectButton" Content="连接" Margin="15,0,20,0" Height="20" Width="90" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=connectButton}"/>
@@ -36,7 +40,7 @@
                     <y:EventTrigger  EventName="Checked">
                         <y:InvokeCommandAction Command="{Binding checkboxCommand}" CommandParameter="Checked"/>
                     </y:EventTrigger>
-                    
+
                     <y:EventTrigger  EventName="Unchecked">
                         <y:InvokeCommandAction Command="{Binding checkboxCommand}" CommandParameter="UnChecked"/>
                     </y:EventTrigger>
@@ -44,15 +48,15 @@
             </CheckBox>
         </WrapPanel>
 
-      
-            <Grid Grid.Row="1">
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" BorderThickness="0,0,1,0" BorderBrush="Gray">
-            <TextBlock Margin="5" Grid.Column="0" Text="{Binding tcpvariable.Texbox1}"/>
+                <TextBlock Margin="5" Grid.Column="0" Text="{Binding tcpvariable.Texbox1}"/>
             </Border>
 
 
@@ -63,7 +67,7 @@
         </Grid>
 
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="4*"/>
@@ -74,7 +78,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <TextBlock Grid.Row="0" Text="心跳接收比对内容" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
             <TextBox Grid.Column="1" Height="40" Width="600" Text="{Binding tcpvariable.HeartbeatForm,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"
                      VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center"                     />
@@ -126,29 +130,34 @@
             </WrapPanel>
 
             <TextBlock Grid.Row="2" Text="数据接收回复内容" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
-            <TextBox Grid.Row="2" Grid.Column="2" Height="20" Width="100" Text="{Binding tcpvariable.Textboxdataok}"/>
+
+
+            <WrapPanel  Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="如果数据忙碌中可回复datang" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBox Height="20" Width="100" Text="{Binding tcpvariable.Textboxdataok, UpdateSourceTrigger=PropertyChanged}"/>
+            </WrapPanel>
         </Grid>
 
-        <DataGrid  Grid.Row="3" Margin="0,20,0,0"
-                   AutoGenerateColumns="False"  CanUserAddRows="False"
-                   ItemsSource="{Binding tcpvariable.Datagrid_List}">
+        <DataGrid  Grid.Row="3" Margin="0,5,0,0"
+                   AutoGenerateColumns="False" IsReadOnly="True"
+                   ItemsSource="{Binding tcpvariable.Datagrid_List}" Grid.ColumnSpan="2">
             <DataGrid.Columns>
 
-                <DataGridTextColumn  Header="工件长" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="工件宽" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="工件厚" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="运动速度" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="工具选择" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="取料选择1" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="取料选择2" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="取料坐标XYZ" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="取料坐标旋转xyzR" Binding="{Binding }"/>
+                <DataGridTextColumn  Header="工件长" Binding="{Binding Lenght}"/>
+                <DataGridTextColumn  Header="工件宽" Binding="{Binding Width}"/>
+                <DataGridTextColumn  Header="工件厚" Binding="{Binding Epaisseur}"/>
+                <DataGridTextColumn  Header="运动速度" Binding="{Binding Speed}"/>
+                <DataGridTextColumn  Header="工具选择" Binding="{Binding Toolchose}"/>
+                <DataGridTextColumn  Header="取料选择1" Binding="{Binding PickLevel_1}"/>
+                <DataGridTextColumn  Header="取料选择2" Binding="{Binding PickLevel_2}"/>
+                <DataGridTextColumn  Header="取料坐标XYZ" Binding="{Binding Pickxyz}"/>
+                <DataGridTextColumn  Header="取料坐标旋转xyzR" Binding="{Binding PickxyzRatation}"/>
 
 
-                <DataGridTextColumn  Header="放料选择1" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="放料选择2" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="放料坐标XYZ" Binding="{Binding }"/>
-                <DataGridTextColumn  Header="放料坐标旋转xyzR" Binding="{Binding }"/>
+                <DataGridTextColumn  Header="放料选择1" Binding="{Binding PutLevel_1}"/>
+                <DataGridTextColumn  Header="放料选择2" Binding="{Binding PutLevel_2}"/>
+                <DataGridTextColumn  Header="放料坐标XYZ" Binding="{Binding Putxyz}"/>
+                <DataGridTextColumn  Header="放料坐标旋转xyzR" Binding="{Binding PutxyzRotation}"/>
             </DataGrid.Columns>
         </DataGrid>
 
