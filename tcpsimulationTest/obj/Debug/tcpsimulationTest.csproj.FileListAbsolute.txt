@@ -10,7 +10,6 @@ c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsim
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\GalaSoft.MvvmLight.Extras.xml
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\System.Windows.Interactivity.xml
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.csprojResolveAssemblyReference.cache
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\MainWindow.g.cs
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\App.g.cs
@@ -24,3 +23,8 @@ c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsim
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.csproj.GenerateResource.Cache
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.exe
 c:\users\li yemao\documents\visual studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.pdb
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\ControlzEx.dll
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\MahApps.Metro.dll
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\ControlzEx.pdb
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\MahApps.Metro.pdb
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\bin\Debug\MahApps.Metro.xml
