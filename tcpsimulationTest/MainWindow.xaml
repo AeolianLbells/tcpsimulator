@@ -8,7 +8,7 @@
         xmlns:y="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"        
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000"  DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+        Title="Machine Arm simulator" Height="800" Width="1000"  DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
     <Window.Resources>
         <i:ColorConverter x:Key="colorconverter"/>
@@ -28,15 +28,15 @@
 
         <WrapPanel Grid.Column="0"  VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,0">
 
-            <TextBlock x:Name="cl" Text="{Binding tcpvariable.State}" Foreground="{Binding tcpvariable.State, Converter={StaticResource colorconverter}}" Margin="8,0,5,0"/>
-            <Button x:Name="connectButton" Content="连接" Margin="15,0,20,0" Height="20" Width="90" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=connectButton}" Style="{StaticResource AccentedSquareButtonStyle}"/>
-            <TextBlock Text="机械人模拟器模拟IP:" Margin="20,0,20,0"/>
+            <TextBlock x:Name="cl" Text="{Binding tcpvariable.State}" Foreground="{Binding tcpvariable.State, Converter={StaticResource colorconverter}}" Margin="8,5,5,0"/>
+            <Button x:Name="connectButton" FontSize="12" Content="连接" Margin="20,0,20,0" Height="30" Width="90" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=connectButton}" Style="{StaticResource AccentedSquareButtonStyle}"/>
+            <TextBlock Text="机械人模拟器模拟IP:" Margin="20,5,20,0"/>
             <TextBox Height="20" Width="80" Text=" " Margin="5,0,5,0"/>
-            <TextBlock Text="通信目标IP:" Margin="5,0,5,0"/>
+            <TextBlock Text="通信目标IP:" Margin="5,5,5,0"/>
             <TextBox Height="20" Width="80" Text="{Binding tcpvariable.IPTarget}"  Margin="5,0,5,0"/>
-            <TextBlock Text="通信目标端口:" Margin="5,0,5,0"/>
+            <TextBlock Text="通信目标端口:" Margin="5,5,5,0"/>
             <TextBox Height="20" Width="40" Text="{Binding tcpvariable.Port}" Margin="5,0,5,0"/>
-            <TextBlock Text="是否过滤心跳内容" Margin="20,0,5,0"/>
+            <TextBlock Text="是否过滤心跳内容" Margin="20,5,5,0"/>
             <CheckBox IsChecked="{Binding tcpvariable.isChec}" Margin="20,0,5,0">
                 <y:Interaction.Triggers>
                     <y:EventTrigger  EventName="Checked">
@@ -76,13 +76,13 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="心跳接收比对内容" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
-            <TextBox Grid.Column="1" Height="40" Width="600" Text="{Binding tcpvariable.HeartbeatForm,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"
+            <TextBox Grid.Column="1" Height="40" Width="660" Text="{Binding tcpvariable.HeartbeatForm,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"
                      VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Center"                     />
 
             <TextBlock Grid.Row="1" Text="心跳回复内容" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
@@ -94,39 +94,39 @@
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[0]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[0]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[0]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[0]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[1]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[1]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[1]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[1]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[2]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[2]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[2]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[2]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[3]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[3]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[3]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[3]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[4]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[4]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[4]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[4]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[5]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[5]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[5]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[5]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[6]}"  ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[6]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[6]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[6]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[7]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[7]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[7]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[7]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[8]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
                 <TextBox Text="{Binding tcpvariable.Textboxsheif[8]}" Height="20" Width="40"  Margin="2"/>
-                <TextBox Text="{Binding tcpvariable.boxN[8]}" Height="20" Width="20"  Margin="2"/>
+                <TextBox Text="{Binding tcpvariable.boxN[8]}" Height="20" Width="30"  Margin="2"/>
                 <ComboBox SelectedIndex="0" SelectedItem="{Binding tcpvariable.CboxSelected[9]}" ItemsSource="{Binding tcpvariable.Source}" Margin="2" IsEditable="True" MinWidth="40"></ComboBox>
 
             </WrapPanel>
