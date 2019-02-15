@@ -22,7 +22,9 @@ namespace tcpsimulationTest.Model
         {
 
             HeartbeatForm = "a";
-            Textboxdataok = "dataok";
+            TextboxdataSendbackok = "dataok";
+
+            TextboxdataSendbackBusy = "datang";//如果不是这个指令 插件会收不到 当作无回复进行处理
             isChec = false;
             TextboxarmL = "1";
 
@@ -32,6 +34,7 @@ namespace tcpsimulationTest.Model
 
             IPTarget = "192.168.0.33";
             IPMachine = "";
+ 
         } 
 
         
@@ -96,7 +99,9 @@ namespace tcpsimulationTest.Model
         /// <summary>
         /// 回复dataok
         /// </summary>
-        public string Textboxdataok { get; set; }
+        public string TextboxdataSendbackok { get; set; }
+
+        public string TextboxdataSendbackBusy { get; set; }
 
         /// <summary>
         /// combox 
@@ -121,8 +126,12 @@ namespace tcpsimulationTest.Model
     [ImplementPropertyChanged]
     public class Paneldata 
     {
+       public Paneldata()
+        {
+            //Stuts = "机器人处理中";
+        }
 
-      
+        public string Stuts { get; set;}
         public string Lenght { get; set; }     
         public string Width { get; set; }
         public string Epaisseur { get; set; }

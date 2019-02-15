@@ -84,6 +84,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\ColorConverter.cs" />
+    <Compile Include="Converter\HightlightConverter.cs" />
     <Compile Include="Model\tcpVariable.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\tcpConnect.cs" />

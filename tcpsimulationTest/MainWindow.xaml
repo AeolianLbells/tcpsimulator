@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tcpsimulationTest"
-        xmlns:i="clr-namespace:tcpsimulationTest.Converter"
+        xmlns:i="clr-namespace:tcpsimulationTest.Converter"        
         xmlns:y="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"        
         mc:Ignorable="d"
@@ -12,6 +12,7 @@
 
     <Window.Resources>
         <i:ColorConverter x:Key="colorconverter"/>
+        <i:Hightlight_Converter x:Key="hlconverter"/>
     </Window.Resources>
 
     <Grid>
@@ -135,16 +136,21 @@
 
 
             <WrapPanel  Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="如果数据忙碌中可回复datang" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                <TextBox Height="20" Width="100" Text="{Binding tcpvariable.Textboxdataok, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="机器人忙碌中回复：" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBox Height="20" Width="100" Text="{Binding tcpvariable.TextboxdataSendbackBusy, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="机器人处理该任务完毕回复：" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBox Height="20" Width="100" Text="{Binding tcpvariable.TextboxdataSendbackok, UpdateSourceTrigger=PropertyChanged}"/>
             </WrapPanel>
         </Grid>
 
-        <DataGrid  Grid.Row="3" Margin="0,5,0,0"
+        <DataGrid   x:Name="dtg"
+                   Grid.Row="3" Margin="0,5,0,0"
                    AutoGenerateColumns="False" IsReadOnly="True"
-                   ItemsSource="{Binding tcpvariable.Datagrid_List}" Grid.ColumnSpan="2">
+                   ItemsSource="{Binding tcpvariable.Datagrid_List}" Grid.ColumnSpan="2" RowBackground="{Binding tcpvariable.Datagrid_List,Converter={StaticResource hlconverter}}" ><!--SelectedIndex="{Binding tcpvariable.Datagrid_List, Converter={StaticResource hlconverter}}"-->
             <DataGrid.Columns>
 
+                <DataGridTextColumn  Header="机器人处理状态" Binding="{Binding Stuts}"/>
                 <DataGridTextColumn  Header="工件长" Binding="{Binding Lenght}"/>
                 <DataGridTextColumn  Header="工件宽" Binding="{Binding Width}"/>
                 <DataGridTextColumn  Header="工件厚" Binding="{Binding Epaisseur}"/>
