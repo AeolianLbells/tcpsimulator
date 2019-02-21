@@ -27,3 +27,4 @@ C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsim
 C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.csproj.GenerateResource.Cache
 C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.exe
 C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.pdb
+C:\Users\LI Yemao\Documents\Visual Studio 2015\Projects\tcpsimulationTest\tcpsimulationTest\obj\Debug\tcpsimulationTest.csprojResolveAssemblyReference.cache
